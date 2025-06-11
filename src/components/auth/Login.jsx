@@ -54,7 +54,7 @@ const Login = ({ onLogin }) => {
                   placeholder="Enter your email"
                   autoComplete="new-email"
                 />
-                <ErrorMessage name="email" className="login-error" />
+                <p class="text-danger"><ErrorMessage name="email" className="login-error" /></p>
               </div>
 
               <div>
@@ -67,7 +67,7 @@ const Login = ({ onLogin }) => {
                   placeholder="Enter your password"
                   autoComplete="new-password"
                 />
-                <ErrorMessage name="password"  className="login-error" />
+                <p class="text-danger"><ErrorMessage name="password"  className="login-error" /></p>
               </div>
 
               <button type="submit" className="login-submit-btn mt-2" disabled={isSubmitting}>
