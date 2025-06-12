@@ -2,7 +2,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
