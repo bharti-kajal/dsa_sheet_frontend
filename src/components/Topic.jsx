@@ -126,13 +126,13 @@ const Topic = () => {
                               </td>
                               <td>{sub.name}</td>
                               <td>
-                                <Link to={sub.leetcode || "/"}>Practice</Link>
+                                <Link to={sub.leetcode || "/"} target="_blank">Practice</Link>
                               </td>
                               <td>
-                                <Link to={sub.youTube || "/"}>Watch</Link>
+                                <Link to={sub.youTube || "/"} target="_blank">Watch</Link>
                               </td>
                               <td>
-                                <Link to={sub.articleLink || "/"}>Read</Link>
+                                <Link to={sub.articleLink || "/"} target="_blank">Read</Link>
                               </td>
                               <td>{sub.level}</td>
                               <td>

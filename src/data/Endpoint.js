@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "http://localhost:3200/api";
+const BASE_URL = "https://dsa-sheet-page.onrender.com/api";
 const TOKEN = localStorage.getItem('authToken');
 
 export const ApiEndPoint = {
