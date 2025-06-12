@@ -2,28 +2,29 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Dashboard from './components/auth/Dashboard';
 import Progress from './components/Progress';
 import Topic from './components/Topic';
-
+import {AuthContext} from './components/AuthContext'
 import DashboardLayout from './components/layouts/DashboardLayout';
-import { isAuthenticated } from './utils/auth';
+
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated());
+  const { authToken } = useContext(AuthContext);
+  const isLoggedIn = !!authToken;
 
   const browserRouter = createBrowserRouter([
     ...(!isLoggedIn ? [
-      { path: "/", element: <Login onLogin={() => setIsLoggedIn(true)} /> },
+      { path: "/", element: <Login /> },
       { path: "/sign-up", element: <Register /> },
       { path: "*", element: <Navigate to="/" /> }
     ] : [
       {
-        element: <DashboardLayout onLogout={() => setIsLoggedIn(false)} />,
+        element: <DashboardLayout />,
         children: [
           { path: "/dashboard", element: <Dashboard /> },
           { path: "/progress", element: <Progress /> },

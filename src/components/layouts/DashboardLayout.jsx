@@ -1,13 +1,11 @@
 import { Outlet } from "react-router-dom";
-import Navbar from '../layouts/Navbar'
+import Navbar from '../layouts/Navbar';
 
-const DashboardLayout = ({ onLogout }) => {
+const DashboardLayout = () => {
   return (
     <>
-      <Navbar onLogout={onLogout} />
-      <div className="container mt-4">
-        <Outlet />
-      </div>
+      <Navbar />
+      <Outlet />
     </>
   );
 };

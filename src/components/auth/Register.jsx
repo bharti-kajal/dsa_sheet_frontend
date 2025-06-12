@@ -50,7 +50,7 @@ const Register = () => {
                   placeholder="Enter your name"
                   autoComplete="off"
                 />
-                <p class="text-danger"><ErrorMessage name="name"  className="login-error" /></p>
+                <p className="text-danger"><ErrorMessage name="name"  className="login-error" /></p>
               </div>
 
               <div>
@@ -63,7 +63,7 @@ const Register = () => {
                   placeholder="Enter your email"
                   autoComplete="new-email"
                 />
-                <p class="text-danger"><ErrorMessage name="email" className="login-error" /></p>
+                <p className="text-danger"><ErrorMessage name="email" className="login-error" /></p>
               </div>
 
               <div>
@@ -76,7 +76,7 @@ const Register = () => {
                   placeholder="Enter your password"
                   autoComplete="new-password"
                 />
-                <p class="text-danger"><ErrorMessage name="password"  className="login-error" /></p>
+                <p className="text-danger"><ErrorMessage name="password"  className="login-error" /></p>
               </div>
 
               <button type="submit" className="login-submit-btn mt-2" disabled={isSubmitting}>

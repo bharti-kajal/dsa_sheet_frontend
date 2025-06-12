@@ -34,7 +34,7 @@ const Dashboard = () => {
                 </p>
                 <div className="d-grid">
                  
-                    <Link to="/topics" className="login-submit-btn mt-2" style={{'width': '50%', 'margin': 'auto'}}>Explore DSA Topics</Link>
+                    <Link to="/topics" className="login-submit-btn mt-2 text-decoration-none" style={{'width': '50%', 'margin': 'auto'}}>Explore DSA Topics</Link>
                
                 </div>
               </div>

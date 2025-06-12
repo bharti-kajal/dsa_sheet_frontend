@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "https://dsa-sheet-page.onrender.com/api";
+const BASE_URL = "http://localhost:3200/api";
 const TOKEN = localStorage.getItem('authToken');
 
 export const ApiEndPoint = {
@@ -35,6 +35,24 @@ export const ApiEndPoint = {
     catch(err){
       console.log("Error In Fetching Transactions", err);
       throw err;
+    }
+  },
+
+  login: async (formData) => {
+    try {
+      const response = await fetch(`${BASE_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.message || "Login failed");
+
+      return data;
+    } catch (error) {
+      console.error("API Error:", error);
+      throw error;
     }
   }
   

@@ -3,24 +3,28 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { loginValidationSchema } from '../../validation/loginValidation';
 import { ApiEndPoint } from '../../data/Endpoint';
 import { toast } from 'react-toastify';
+import {AuthContext} from '../AuthContext';
+import { useContext } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import './Auth.css';
 
-const Login = ({ onLogin }) => {
-  const navigate = useNavigate();
+
+const Login = () => {
+
+   const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
 
   const initialValues = {
     email: '',
     password: ''
   };
 
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  const handleSubmit = async (values, { setSubmitting }) => {
     try {
-      const response = await ApiEndPoint.post(values, 'login');
-        if (response.status && response.token) {
-        localStorage.setItem("authToken", response.token);
+      const response = await ApiEndPoint.login(values);
+      if (response.status && response.token) {
+        login(response.token);
         toast.success("Login successful!");
-         onLogin();
         navigate("/dashboard");
       } else {
         toast.error("Login failed");
@@ -54,7 +58,7 @@ const Login = ({ onLogin }) => {
                   placeholder="Enter your email"
                   autoComplete="new-email"
                 />
-                <p class="text-danger"><ErrorMessage name="email" className="login-error" /></p>
+                <p className="text-danger"><ErrorMessage name="email" className="login-error" /></p>
               </div>
 
               <div>
@@ -67,7 +71,7 @@ const Login = ({ onLogin }) => {
                   placeholder="Enter your password"
                   autoComplete="new-password"
                 />
-                <p class="text-danger"><ErrorMessage name="password"  className="login-error" /></p>
+                <p className="text-danger"><ErrorMessage name="password"  className="login-error" /></p>
               </div>
 
               <button type="submit" className="login-submit-btn mt-2" disabled={isSubmitting}>

@@ -1,14 +1,16 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { AuthContext } from '../AuthContext'
 
-const Navbar = ({ onLogout }) => {
+const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { logout } = useContext(AuthContext);
 
   const isActive = (path) => location.pathname === path;
 
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    onLogout(); 
+    logout(); 
     navigate("/");
   };
 
